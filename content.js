@@ -5,42 +5,39 @@ const resetMessage = "new round begins";
 // Listen for messages
 chrome.runtime.onMessage.addListener(generateCount);
 
-// how many player tables are there?
-var numberOfPlayers = document.querySelectorAll(
-  '[id^="playertable_"][class~="playertable"]'
-).length;
+var isExpansion = document.getElementById("ll_background").classList.contains("expansion");
 
-if (numberOfPlayers > 4) {
+if (isExpansion) {
   // expansion cards
   roles = [
-    { name: "Guard", global: 8, current: 8 },
-    { name: "Countess", global: 1, current: 1 },
-    { name: "King", global: 1, current: 1 },
-    { name: "Handmaid", global: 2, current: 2 },
-    { name: "Priest", global: 2, current: 2 },
-    { name: "Baron", global: 2, current: 2 },
-    { name: "Princess", global: 1, current: 1 },
-    { name: "Prince", global: 2, current: 2 },
-    { name: "Bishop", global: 1, current: 1 },
-    { name: "Dowager", global: 1, current: 1 },
-    { name: "Sycophant", global: 2, current: 2 },
-    { name: "Baroness", global: 2, current: 2 },
-    { name: "Cardinal", global: 2, current: 2 },
-    { name: "Jester", global: 1, current: 1 },
-    { name: "Assassin", global: 1, current: 1 },
-    { name: "Count", global: 2, current: 2 },
-    { name: "Constable", global: 1, current: 1 },
+    { name: "Jester", global: 1, current: 1, value: 0 },
+    { name: "Assassin", global: 1, current: 1, value: 0 },
+    { name: "Guard", global: 8, current: 8, value: 1 },
+    { name: "Priest", global: 2, current: 2, value: 2 },
+    { name: "Cardinal", global: 2, current: 2, value: 2 },
+    { name: "Baron", global: 2, current: 2, value: 3 },
+    { name: "Baroness", global: 2, current: 2, value: 3 },
+    { name: "Handmaid", global: 2, current: 2, value: 4 },
+    { name: "Sycophant", global: 2, current: 2, value: 4 },
+    { name: "Prince", global: 2, current: 2, value: 5 },
+    { name: "Count", global: 2, current: 2, value: 5 },
+    { name: "King", global: 1, current: 1, value: 6 },
+    { name: "Constable", global: 1, current: 1, value: 6 },
+    { name: "Countess", global: 1, current: 1, value: 7 },
+    { name: "Dowager", global: 1, current: 1, value: 7 },
+    { name: "Princess", global: 1, current: 1, value: 8 },
+    { name: "Bishop", global: 1, current: 1, value: 9 }
   ];
 } else {
   roles = [
-    { name: "Guard", global: 5, current: 5 },
-    { name: "Countess", global: 1, current: 1 },
-    { name: "King", global: 1, current: 1 },
-    { name: "Handmaid", global: 2, current: 2 },
-    { name: "Priest", global: 2, current: 2 },
-    { name: "Baron", global: 2, current: 2 },
-    { name: "Princess", global: 1, current: 1 },
-    { name: "Prince", global: 2, current: 2 },
+    { name: "Guard", global: 5, current: 5, value: 1 },
+    { name: "Priest", global: 2, current: 2, value: 2 },
+    { name: "Baron", global: 2, current: 2, value: 3 },
+    { name: "Handmaid", global: 2, current: 2, value: 4 },
+    { name: "Prince", global: 2, current: 2, value: 5 },
+    { name: "King", global: 1, current: 1, value: 6 },
+    { name: "Countess", global: 1, current: 1, value: 7 },
+    { name: "Princess", global: 1, current: 1, value: 8 },
   ];
 }
 
@@ -96,7 +93,7 @@ function removeCard(card) {
  */
 function display() {
   var results = roles.map(
-    (element) => "" + element.name + ": " + element.current + "\n"
+    (element) => "(" + element.value + ") " + element.name + ": " + element.current + "\n"
   );
   alert(results.join(""));
 }
