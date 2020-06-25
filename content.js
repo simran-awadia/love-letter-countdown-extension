@@ -93,7 +93,7 @@ function removeCard(card) {
  */
 function display() {
   var results = roles.map(
-    (element) => "" + element.name + ": " + element.current + "\n"
+    (element) => "(" + element.value + ") " + element.name + ": " + element.current + "\n"
   );
   alert(results.join(""));
 }
