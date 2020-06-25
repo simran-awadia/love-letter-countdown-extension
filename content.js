@@ -5,12 +5,9 @@ const resetMessage = "new round begins";
 // Listen for messages
 chrome.runtime.onMessage.addListener(generateCount);
 
-// how many player tables are there?
-var numberOfPlayers = document.querySelectorAll(
-  '[id^="playertable_"][class~="playertable"]'
-).length;
+var isExpansion = document.getElementById("ll_background").classList.contains("expansion");
 
-if (numberOfPlayers > 4) {
+if (isExpansion) {
   // expansion cards
   roles = [
     { name: "Guard", global: 8, current: 8 },
