@@ -1,11 +1,13 @@
 // regex to look for in the logs
-const playCard = new RegExp("(plays|discards)\\s*a?\\s*([a-zA-Z]*)");
+const playCard = new RegExp("(plays|discards)\\s*(a|their)?\\s*([a-zA-Z]*)");
 const resetMessage = "new round begins";
 
 // Listen for messages
 chrome.runtime.onMessage.addListener(generateCount);
 
-var isExpansion = document.getElementById("ll_background").classList.contains("expansion");
+var isExpansion = document
+  .getElementById("ll_background")
+  .classList.contains("expansion");
 
 if (isExpansion) {
   // expansion cards
