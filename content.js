@@ -1,5 +1,5 @@
 // regex to look for in the logs
-const playCard = new RegExp("(plays|discards)\\s*(a|their)?\\s*([a-zA-Z]*)");
+const playCard = new RegExp("(plays|discards)\\s*(?:a|their)?\\s*([a-zA-Z]*)");
 const resetMessage = "new round begins";
 
 // Listen for messages
