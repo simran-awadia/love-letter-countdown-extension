@@ -15,7 +15,6 @@ The counts will automatically reset at the end of every round.
 
 ## Possible Improvements 
 1. Use an image of the deck as the icon instead of a `C`
-1. Specify the game table URL in the manifest
 1. Make the information appear on a popup page instead of a simple alert
 
 ## Background
