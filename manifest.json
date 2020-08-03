@@ -5,7 +5,7 @@
   "permissions": ["activeTab"],
   "content_scripts": [
     {
-      "matches": ["https://*.boardgamearena.com/6/loveletter*"],
+      "matches": ["https://*.boardgamearena.com/*/loveletter*"],
       "js": ["content.js"]
     }
   ],
